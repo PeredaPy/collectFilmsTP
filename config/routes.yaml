@@ -3,18 +3,18 @@ categories:
     methods: [GET]
     controller: App\Controller\CategoryController::getAllCategories
 category:
-  path: /categories/{id}
-  methods: [GET]
-  controller: App\Controller\CategoryController::getCategory
+    path: /categories/{id}
+    methods: [GET]
+    controller: App\Controller\CategoryController::getCategory
 category_delete:
     path: /categories/{id}
     methods: [DELETE]
     controller: App\Controller\CategoryController::deleteCategory
-categories:
+category_create:
     path: /categories
     methods: [POST]
     controller: App\Controller\CategoryController::createCategory
-categories:
+category_update:
     path: /categories/{id}
     methods: [PUT]
     controller: App\Controller\CategoryController::updateCategory
@@ -32,12 +32,12 @@ actor_delete:
     path: /actors/{id}
     methods: [DELETE]
     controller: App\Controller\ActorController::deleteActor
-actor:
+actor_create:
     path: /actors
     methods: [POST]
     controller: App\Controller\ActorController::createActor
-actor:
-    path: /actors
+actor_update:
+    path: /actors/{id}
     methods: [PUT]
     controller: App\Controller\ActorController::updateActor
 
@@ -54,3 +54,11 @@ movie_delete:
     path: /movies/{id}
     methods: [DELETE]
     controller: App\Controller\MovieController::deleteMovie
+movie_create:
+    path: /movies
+    methods: [POST]
+    controller: App\Controller\MovieController::createMovie
+movie_update:
+    path: /movies/{id}
+    methods: [PUT]
+    controller: App\Controller\MovieController::updateMovie
