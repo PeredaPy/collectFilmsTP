@@ -109,4 +109,16 @@ class MovieController extends AbstractController
     $jsonResponse = json_encode([]);
     return new Response($jsonResponse);
   }
+  /**
+   * @Route("/titleSort", methods={"GET"})
+   */
+  function titleSort($id){
+
+    return $this->createQueryBuilder('title')
+            ->addWhere('movie.id = :id')
+            ->setParameter('movie.id', $id)
+            ->orderBy('movie.title', 'desc')
+            ->getQuery()
+            ->getResult();
+  }
 }

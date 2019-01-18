@@ -11,9 +11,8 @@
     Trier par
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Titre</a>
-    {% for name in categories|sort %}
-    <a class="dropdown-item" href="#">Catégorie</a>
+    <a class="dropdown-item" href="titleSort">Titre</a>
+    {% for name in movies|sort %}
     {% endfor %}
   </div>
 </div>
@@ -34,8 +33,8 @@
     {% for movie in movies %}
       <tr>
         <th scope="row">{{ loop.index }}</th>
-            <td colspan="4">{{ category.title }}</td>
-            <td colspan="4">{{ category.year }}</td>
+            <td colspan="4">{{ movie.title }}</td>
+            <td colspan="4">{{ movie.year }}</td>
             <td colspan="2">
               <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-edit"></span> Edit

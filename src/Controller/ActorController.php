@@ -29,8 +29,9 @@ class ActorController extends AbstractController
       ],
     ];
 
-    $jsonResponse = json_encode($actors);
-    return new Response($jsonResponse);
+    return $this->render('actors/actors.html.twig', [
+        'actors' => $actors,
+    ]);
   }
 
   /**
