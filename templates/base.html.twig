@@ -2,11 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
+      <h1>Bienvenue dans la vidéotèque</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" onclick="window.location.href='/movies'" class="btn btn-secondary">Films</button>
+        <button type="button" onclick="window.location.href='/categories'" class="btn btn-secondary">Catégories</button>
+        <button type="button" onclick="window.location.href='/actors'" class="btn btn-secondary">Acteurs</button>
+      </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     </body>
 </html>
