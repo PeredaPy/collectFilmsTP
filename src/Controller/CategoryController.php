@@ -8,20 +8,30 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/categories", methods={"GET", "DELETE"})
+ * @Route("/categories", methods={"GET", "DELETE", "POST", "PUT"})
  */
 class CategoryController
 {
+    /**
+      * @Route("/categories", methods={"GET"})
+      */
     function getAllCategories() {
         $categories= [
-            ["name" => "Categorie 1"],
-            ["name" => "Categorie 2"],
-            ["name" => "Categorie 3"],
+            ["name" => "Animation"],
+            ["name" => "Comedie"],
+            ["name" => "Policier"],
+            ["name" => "Romantique"],
+            ["name" => "Guerre"],
+            ["name" => "Action"],
+            ["name" => "Aventure"],
+            ["name" => "Science-fiction"],
         ];
         $jsonResponse = json_encode($categories);
         return new Response($jsonResponse);
     }
-
+    /**
+      * @Route("/categories/{id}", methods={"GET"})
+      */
     function getCategory($id) {
         $category= [
             "id" => $id,
@@ -32,21 +42,41 @@ class CategoryController
 
         return new Response($jsonResponse);
     }
-
+    /**
+      * @Route("/categories/id", methods={"DELETE"})
+      */
     function deleteCategory($id) {
-        $jsonResponse = json_encode([]);
+
+        if(!null == $id){
+          $jsonResponse = json_encode([]);
+        }
+
         return new Response($jsonResponse);
     }
 
+    /**
+      * @Route("/categories", methods={"POST"})
+      */
     function createCategory(Request $request) {
 
-        $body = $request->getContent();
+        $category= [
+            "name" => "Horreur"
+        ];
 
-        $body = json_decode($body);
-
-        $responseJson = json_encode([]);
+        $responseJson = json_encode($category);
 
         return new Response($responseJson, 201);
     }
 
+    /**
+      * @Route("/categories/id", methods={"PUT"})
+      */
+    function updateCategory($id) {
+
+      $category= [
+          "name" => "Guerre"
+      ];
+      $jsonResponse = json_encode($category);
+      return new Response($jsonResponse);
+    }
 }
