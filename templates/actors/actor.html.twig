@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>{{ actor.firstname }} {{ actor.lastname }}</h1>
+<br>
+<form method="post" class="form-group">
+  Informations:<br>
+  <label class="form-check-label">Prénom</label>
+  <input value="{{ actor.firstname }}" class="form-control" type="text" name="name"><br>
+  <label class="form-check-label">Nom</label>
+  <input value="{{ actor.lastname }}" class="form-control" type="text" name="engine"><br>
+  <input type="submit" value="Update">
+</form>
+
+{% endblock %}
