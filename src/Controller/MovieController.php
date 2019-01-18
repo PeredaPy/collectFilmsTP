@@ -5,8 +5,13 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class MovieController
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+class MovieController extends AbstractController
 {
 
   /**
@@ -33,8 +38,13 @@ class MovieController
         "synopsis" => "La cruelle reine Bavmorda règne sur le peuple des Daïkinis. Lorsqu'une prédiction annonce la naissance imminente d'une princesse qui la détrônera, Bavmorda donne l'ordre de tuer tous les nouveau-nés du royaume. Elora, le bébé de la prophétie, échappe au massacre. Elle est recueillie par Willow, un homme de petite taille qui fait partie de la race des Nelwyns. Ce dernier est chargé de ramener l'enfant au pays des Daïkinis."
       ]
     ];
-    $jsonResponse = json_encode($movies);
-    return new Response($jsonResponse);
+
+    return $this->render('movies/movies.html.twig', [
+        'movies' => $movies,
+    ]);
+
+    // $jsonResponse = json_encode($movies);
+    // return new Response($jsonResponse);
   }
 
   /**
@@ -49,9 +59,12 @@ class MovieController
       "synopsis" => "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. A cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui-ci l'exhorte à aller au-delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est-ce que la Matrice ?"
     ];
 
-    $jsonResponse = json_encode($movie);
-
-    return new Response($jsonResponse);
+    // $jsonResponse = json_encode($movie);
+    //
+    // return new Response($jsonResponse);
+    return $this->render('movies/movie.html.twig', [
+        'movie' => $movie,
+    ]);
   }
 
   /**
@@ -59,7 +72,6 @@ class MovieController
    */
   function createMovie() {
     $movie= [
-      "id" => $id,
       "title" => "Matrix",
       "year" => "1999",
       "poster" => "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg",
@@ -74,16 +86,24 @@ class MovieController
    * @Route("/movies/id", methods={"PUT"})
    */
   function updateMovie($id) {
-    $movie= [
-      "id" => $id,
-      "title" => "Matrix",
-      "year" => "1999",
-      "poster" => "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg",
-      "synopsis" => "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. A cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui-ci l'exhorte à aller au-delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est-ce que la Matrice ?"
-    ];
-
-    $jsonResponse = json_encode($movie);
-    return new Response($jsonResponse);
+    // $movie= [
+    //   "id" => $id,
+    //   "title" => "Matrix",
+    //   "year" => "1999",
+    //   "poster" => "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg",
+    //   "synopsis" => "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. A cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui-ci l'exhorte à aller au-delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est-ce que la Matrice ?"
+    // ];
+    //
+    // $jsonResponse = json_encode($movie);
+    // return new Response($jsonResponse);
+    $form = $this->createFormBuilder($task)
+            ->setAction($this->generateUrl('categories/categories'))
+            ->setMethod('GET')
+            ->add('title', TextType::class)
+            ->add('year', TextType::class)
+            ->add('title', TextType::class)
+            ->add('poster', TextType::class)
+            ->getForm();
   }
 
   /**

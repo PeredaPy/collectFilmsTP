@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>{{ movie.title }}</h1>
+<img src="{{ movie.poster }}" alt="">
+<br>
+<form method="post" class="form-group">
+  Informations:<br>
+  <label class="form-check-label">Titre</label>
+  <input value="{{ movie.title }}" class="form-control" type="text" name="name"><br>
+  <label class="form-check-label">Année</label>
+  <input value="{{ movie.year }}" class="form-control" type="text" name="engine"><br>
+  <label class="form-check-label">Synopsis</label>
+  <input value="{{ movie.synopsis }}" class="form-control" type="text" name="color"><br>
+  <label class="form-check-label">url de l'image du poster</label>
+  <input value="{{ movie.poster }}" class="form-control" type="text" name="model"><br>
+  <input type="submit" value="Update">
+</form>
+
+{% endblock %}
