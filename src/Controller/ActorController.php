@@ -44,9 +44,13 @@ class ActorController extends AbstractController
         "lastname" => "Hawke"
       ];
 
-    $jsonResponse = json_encode($actor);
+    // $jsonResponse = json_encode($actor);
+    // 
+    // return new Response($jsonResponse);
 
-    return new Response($jsonResponse);
+    return $this->render('actors/actor.html.twig', [
+        'actor' => $actor,
+    ]);
   }
 
   /**
