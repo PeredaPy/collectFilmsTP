@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %} {% block body %}
 
-<h2>Catégories</h2>
+<h2>Acteurs</h2>
 
 <button type="button" class="btn btn-primary btn-lg">
-    <span class="glyphicon glyphicon-plus"></span>Ajouter catégorie
+    <span class="glyphicon glyphicon-plus"></span>Ajouter Movie
 </button>
 
 <div class="dropdown">
@@ -11,10 +11,7 @@
     Trier par
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Titre</a>
-    {% for name in categories|sort %}
-    <a class="dropdown-item" href="#">Catégorie</a>
-    {% endfor %}
+    <a class="dropdown-item" href="#">Nom</a>
   </div>
 </div>
 
@@ -23,17 +20,19 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col" colspan="8">Nom</th>
+      <th scope="col" colspan="4">Nom</th>
+      <th scope="col" colspan="4">Prénom</th>
       <th scope="col" colspan="2">Éditer</th>
       <th scope="col" colspan="2">Supprimer</th>
     </tr>
   </thead>
 
   <tbody>
-    {% for category in categories %}
+    {% for actor in actors %}
       <tr>
         <th scope="row">{{ loop.index }}</th>
-            <td colspan="8">{{ category.name }}</td>
+            <td colspan="4">{{ actor.lastname }}</td>
+            <td colspan="4">{{ actor.firstname }}</td>
             <td colspan="2">
               <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-edit"></span> Edit
