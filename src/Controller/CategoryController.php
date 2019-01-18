@@ -6,11 +6,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/categories", methods={"GET", "DELETE", "POST", "PUT"})
  */
-class CategoryController
+class CategoryController extends AbstractController
 {
     /**
       * @Route("/categories", methods={"GET"})
@@ -26,8 +27,12 @@ class CategoryController
             ["name" => "Aventure"],
             ["name" => "Science-fiction"],
         ];
-        $jsonResponse = json_encode($categories);
-        return new Response($jsonResponse);
+        // $jsonResponse = json_encode($categories);
+        // return new Response($jsonResponse);
+
+        return $this->render('categories/categories.html.twig', [
+            'categories' => $categories,
+        ]);
     }
     /**
       * @Route("/categories/{id}", methods={"GET"})

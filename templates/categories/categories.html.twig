@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<h2>Catégories</h2>
+
+<button type="button" class="btn btn-primary btn-lg">
+    <span class="glyphicon glyphicon-plus"></span>Ajouter catégorie
+</button>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Trier par
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Titre</a>
+    <a class="dropdown-item" href="#">Catégorie</a>
+  </div>
+</div>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" colspan="8">Nom</th>
+      <th scope="col" colspan="2">Éditer</th>
+      <th scope="col" colspan="2">Supprimer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for category in categories %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+            <td colspan="8">{{ category.name }}</td>
+            <td colspan="2">
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+              </button>
+            </td>
+            <td colspan="2">
+              <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-trash"></span> Supprimer
+              </button>
+            </td>
+      </tr>
+    {% endfor %}
+</table>
+{% endblock %}
