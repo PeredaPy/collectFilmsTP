@@ -16,18 +16,21 @@ class MovieController extends AbstractController
   function getAllMovies() {
     $movies= [
       [
+        "id" => "1",
         "title" => "Matrix",
         "year" => "1999",
         "poster" => "https://imgc.allpostersimages.com/img/print/u-g-F4S5W20.jpg",
         "synopsis" => "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. A cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui-ci l'exhorte à aller au-delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est-ce que la Matrice ?"
       ],
       [
+        "id" => "2",
         "title" => "Predestination",
         "year" => "2014",
         "poster" => "https://m.media-amazon.com/images/M/MV5BMTAzODc3NjU1NzNeQTJeQWpwZ15BbWU4MDk5NTQ4NTMx._V1_SY1000_CR0,0,677,1000_AL_.jpg",
         "synopsis" => "Un agent spécial, qui fait partie d'une équipe de onze individus, possède la capacité exceptionnelle de voyager dans le temps pour traquer des criminels. Sa prochaine mission consiste à se rendre à New York, en 1975, pour arrêter un tueur fou, qui projette de faire sauter tout un quartier de la ville."
       ],
       [
+        "id" => "3",
         "title" => "Willow",
         "year" => "1988",
         "poster" => "http://img2.picup.co/di/A4IZB/f471bb12e504d8f0a0347d60518804d2.jpg",

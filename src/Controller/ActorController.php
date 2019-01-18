@@ -16,14 +16,17 @@ class ActorController extends AbstractController
   function getAllActors() {
     $actors= [
       [
+        "id" => "1",
         "firstname" => "Nicolas",
         "lastname" => "Cage"
       ],
       [
+        "id" => "2",
         "firstname" => "Ethan",
         "lastname" => "Hawke"
       ],
       [
+        "id" => "3",
         "firstname" => "Clint",
         "lastname" => "Eastwood"
       ],
@@ -45,7 +48,7 @@ class ActorController extends AbstractController
       ];
 
     // $jsonResponse = json_encode($actor);
-    // 
+    //
     // return new Response($jsonResponse);
 
     return $this->render('actors/actor.html.twig', [
