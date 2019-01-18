@@ -1,0 +1,413 @@
+swagger: '2.0'
+info:
+  description: |
+    This is a sample Blog server.
+  version: 1.0.0
+  title: Blog1
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: petstore.swagger.io
+# basePath: /v2
+tags:
+- name: actor
+  description: Everything about actors
+- name: movie
+  description: All movies
+- name: category
+  description: movie categories
+# schemes:
+# - http
+paths:
+  /actors:
+    post:
+      tags:
+      - actor
+      summary: Add a new actor
+      operationId: addActor
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Add actor
+        required: true
+        schema:
+          $ref: '#/definitions/Actor'
+      responses:
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - actor
+      summary: List all actors
+      description: Returns all actors
+      operationId: getActors
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Actor'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: No actor not found
+      security:
+      - api_key: []
+  /actors/{actorId}:
+    get:
+      tags:
+      - actor
+      summary: Find actor by ID
+      description: Returns a single actor
+      operationId: getActorById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: actorId
+        in: path
+        description: ID of actor to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Actor'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Actor not found
+      security:
+      - api_key: []
+    put:
+      tags:
+      - actor
+      summary: Updated actor
+      description: Updated a actor
+      operationId: updateActor
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: actorId
+        in: path
+        description: ID of actor
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid actor supplied
+        404:
+          description: Actor not found
+    delete:
+      tags:
+      - actor
+      summary: Delete actor by ID
+      description: Delete a actor
+      operationId: deleteActor
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: actorId
+        in: path
+        description: ID of actor
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid actor
+        404:
+          description: Actor not found
+  /categories:
+    post:
+      tags:
+      - category
+      summary: Add a new category
+      operationId: addCategory
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Add category
+        required: true
+        schema:
+          $ref: '#/definitions/Category'
+      responses:
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - category
+      summary: Returns a list of categories
+      description: Returns a map of categories
+      operationId: getCategories
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+              format: int32
+      security:
+      - api_key: []
+  /categories/{categoryId}:
+    get:
+      tags:
+      - category
+      summary: Find category by ID
+      description: Find category by ID
+      operationId: getCategoryById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: categoryId
+        in: path
+        description: ID of category that needs to be fetched
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Category'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Category not found
+    put:
+      tags:
+      - category
+      summary: Updated category
+      description: Updated a category
+      operationId: updateCategory
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: categoryId
+        in: path
+        description: ID of category
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid category supplied
+        404:
+          description: Category not found
+    delete:
+      tags:
+      - category
+      summary: Delete category by ID
+      description: Delete a category
+      operationId: deleteCategory
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: categoryId
+        in: path
+        description: ID of category
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid category
+        404:
+          description: Category not found
+  /movies:
+    post:
+      tags:
+      - movie
+      summary: Add a new movie
+      operationId: addMovie
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Add movie
+        required: true
+        schema:
+          $ref: '#/definitions/Movie'
+      responses:
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - movie
+      summary: Returns a list of movies
+      description: Returns a map of movies
+      operationId: getMovies
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+              format: int32
+      security:
+      - api_key: []
+  /movies/{movieId}:
+    get:
+      tags:
+      - movie
+      summary: Find movie by ID
+      description: Find movie by ID
+      operationId: getMovieById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: movieId
+        in: path
+        description: ID of movie that needs to be fetched
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Movie'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Movie not found
+    put:
+      tags:
+      - movie
+      summary: Updated movie
+      description: Updated a movie
+      operationId: updateMovie
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: movieId
+        in: path
+        description: ID of movie
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid movie supplied
+        404:
+          description: Movie not found
+    delete:
+      tags:
+      - movie
+      summary: Delete movie by ID
+      description: Delete a movie
+      operationId: deleteMovie
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: movieId
+        in: path
+        description: ID of movie
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid movie
+        404:
+          description: Movie not found
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Movie:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      categoryId:
+        type: integer
+        format: int64
+      actorId:
+        type: integer
+        format: int64
+      title:
+        type: string
+      year:
+        type: string
+      poster:
+        type: string
+      synopsis:
+        type: string
+    xml:
+      name: Movie
+  Category:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    xml:
+      name: Category
+  Actor:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      firstname:
+        type: string
+      lastname:
+        type: string
+    xml:
+      name: Actor
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /clem6/Blog1/1.0.0
+schemes:
+ - https
+ - http
