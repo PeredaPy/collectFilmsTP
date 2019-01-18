@@ -7,34 +7,80 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/actors", methods={"GET"})
- */
 class ActorController
 {
-    function getAllActors() {
-        $actors= [
-            ["name" => "Actor 1"],
-            ["name" => "Actor 2"],
-            ["name" => "Actor 3"],
-        ];
-        $jsonResponse = json_encode($actors);
-        return new Response($jsonResponse);
-    }
+  /**
+   * @Route("/actors", methods={"GET"})
+   */
+  function getAllActors() {
+    $actors= [
+      [
+        "firstname" => "Nicolas",
+        "lastname" => "Cage"
+      ],
+      [
+        "firstname" => "Ethan",
+        "lastname" => "Hawke"
+      ],
+      [
+        "firstname" => "Clint",
+        "lastname" => "Eastwood"
+      ],
+    ];
 
-    function getActor($id) {
-        $actor= [
-            "id" => $id,
-            "name" => "Auteur ".$id
-        ];
+    $jsonResponse = json_encode($actors);
+    return new Response($jsonResponse);
+  }
 
-        $jsonResponse = json_encode($actor);
+  /**
+   * @Route("/actors/id", methods={"GET"})
+   */
+  function getActor($id) {
+    $actor= [
+        "id" => $id,
+        "firstname" => "Ethan",
+        "lastname" => "Hawke"
+      ],;
 
-        return new Response($jsonResponse);
-    }
+    $jsonResponse = json_encode($actor);
 
-    function createActor(Request $request) {
+    return new Response($jsonResponse);
+  }
 
+  /**
+   * @Route("/actors", methods={"POST"})
+   */
+  function createActor() {
+    $actor= [
+        "firstname" => "Billy",
+        "lastname" => "Boy"
+    ];
 
-    }
+    $jsonResponse = json_encode($actor);
+
+    return new Response($jsonResponse);
+  }
+
+  /**
+   * @Route("/actors/id", methods={"PUT"})
+   */
+  function updateActor($id) {
+    $actor= [
+        "id" => $id,
+        "firstname" => "Jude",
+        "lastname" => "Law"
+    ];
+
+    $jsonResponse = json_encode($actor);
+
+    return new Response($jsonResponse);
+  }
+
+  /**
+   * @Route("/actors/id", methods={"DELETE"})
+   */
+  function deleteActor($id) {
+    $jsonResponse = json_encode([]);
+    return new Response($jsonResponse);
+  }
 }
