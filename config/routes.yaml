@@ -2,45 +2,55 @@ categories:
     path: /categories
     methods: [GET]
     controller: App\Controller\CategoryController::getAllCategories
-
 category:
   path: /categories/{id}
   methods: [GET]
   controller: App\Controller\CategoryController::getCategory
-
 category_delete:
     path: /categories/{id}
     methods: [DELETE]
     controller: App\Controller\CategoryController::deleteCategory
-
-
-authors:
-    path: /authors
-    methods: [GET]
-    controller: App\Controller\AuthorController::getAllAuthors
-
-author:
-    path: /authors/{id}
-    methods: [GET]
-    controller: App\Controller\AuthorController::getAuthor
-
-
-articles:
-    path: /articles
-    methods: [GET]
-    controller: App\Controller\ArticleController::getAllArticles
-
-article:
-    path: /articles/{id}
-    methods: [GET]
-    controller: App\Controller\ArticleController::getArticle
-
-article_delete:
-    path: /articles/{id}
-    methods: [DELETE]
-    controller: App\Controller\ArticleController::deleteArticle
-
-login:
-    path: /login
+categories:
+    path: /categories
     methods: [POST]
-    controller: App\Controller\LoginController::login
+    controller: App\Controller\CategoryController::createCategory
+categories:
+    path: /categories/{id}
+    methods: [PUT]
+    controller: App\Controller\CategoryController::updateCategory
+
+
+actors:
+    path: /actors
+    methods: [GET]
+    controller: App\Controller\ActorController::getAllActors
+actor:
+    path: /actors/{id}
+    methods: [GET]
+    controller: App\Controller\ActorController::getActor
+actor_delete:
+    path: /actors/{id}
+    methods: [DELETE]
+    controller: App\Controller\ActorController::deleteActor
+actor:
+    path: /actors
+    methods: [POST]
+    controller: App\Controller\ActorController::createActor
+actor:
+    path: /actors
+    methods: [PUT]
+    controller: App\Controller\ActorController::updateActor
+
+
+movies:
+    path: /movies
+    methods: [GET]
+    controller: App\Controller\MovieController::getAllMovies
+movie:
+    path: /movies/{id}
+    methods: [GET]
+    controller: App\Controller\MovieController::getMovie
+movie_delete:
+    path: /movies/{id}
+    methods: [DELETE]
+    controller: App\Controller\MovieController::deleteMovie

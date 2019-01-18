@@ -8,32 +8,32 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/authors", methods={"GET"})
+ * @Route("/actors", methods={"GET"})
  */
-class AuthorController
+class ActorController
 {
-    function getAllAuthors() {
-        $authors= [
-            ["name" => "Author 1"],
-            ["name" => "Author 2"],
-            ["name" => "Author 3"],
+    function getAllActors() {
+        $actors= [
+            ["name" => "Actor 1"],
+            ["name" => "Actor 2"],
+            ["name" => "Actor 3"],
         ];
-        $jsonResponse = json_encode($authors);
+        $jsonResponse = json_encode($actors);
         return new Response($jsonResponse);
     }
 
-    function getAuthor($id) {
-        $author= [
+    function getActor($id) {
+        $actor= [
             "id" => $id,
             "name" => "Auteur ".$id
         ];
 
-        $jsonResponse = json_encode($author);
+        $jsonResponse = json_encode($actor);
 
         return new Response($jsonResponse);
     }
 
-    function createAuthor(Request $request) {
+    function createActor(Request $request) {
 
 
     }
