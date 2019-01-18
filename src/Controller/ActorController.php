@@ -6,8 +6,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ActorController
+class ActorController extends AbstractController
 {
   /**
    * @Route("/actors", methods={"GET"})
@@ -40,7 +41,7 @@ class ActorController
         "id" => $id,
         "firstname" => "Ethan",
         "lastname" => "Hawke"
-      ],;
+      ];
 
     $jsonResponse = json_encode($actor);
 
